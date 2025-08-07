@@ -1,5 +1,6 @@
 import dbConnect, { collectionNames } from "@/lib/dbConnect";
 import { ObjectId } from "mongodb";
+import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 
 export const GET = async (req, {params}) => {
@@ -18,4 +19,13 @@ export const GET = async (req, {params}) => {
         
 
     }
+}
+
+export const DELETE = async( req, {params}) => {
+
+    const p = await params;
+    const tasksCollection = dbConnect(collectionNames.tasksCollection);
+    const result = await tasksCollection.deleteOne({_id : new ObjectId(p.id)});
+    revalidatePath('/mytasks');
+    return NextResponse.json(result);
 }

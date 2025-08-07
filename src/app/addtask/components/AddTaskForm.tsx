@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { useSession } from "next-auth/react";
 import toast from "react-hot-toast";
 import { format } from "date-fns";

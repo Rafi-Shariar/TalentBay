@@ -62,7 +62,7 @@ const Navbar = () => {
                 </Link>
               </li>
               <li>
-                <Link href={"/"}>
+                <Link href={"/mytasks"}>
                   <MdBookmarkAdded />
                   My Posted Tasks
                 </Link>

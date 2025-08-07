@@ -8,7 +8,7 @@ const page = async () => {
     const tasks = await dbConnect(collectionNames.tasksCollection).find({}).toArray();
   return (
     <div className="p-2">
-      <section className="mt-16">
+      <section className="mt-16 text-center">
         <h1 className="text-3xl font-semibold">Browse All Freelance Tasks</h1>
         <p className="text-lg text-gray-500">
           Discover a wide range of freelance tasks tailored to your skills.
