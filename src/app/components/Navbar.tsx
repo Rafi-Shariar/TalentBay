@@ -9,7 +9,7 @@ import { MdBookmarkAdded } from "react-icons/md";
 import { IoIosLogIn } from "react-icons/io";
 const Navbar = () => {
   return (
-    <div>
+    <div className="">
       <div className="navbar bg-base-100 shadow-sm p-3">
         <div className="navbar-start">
           <div className="dropdown">
@@ -60,7 +60,7 @@ const Navbar = () => {
            </Link>
         </div>
         <div className="navbar-end">
-           <button className="btn btn-soft border border-blue-300 rounded-lg btn-info md:px-5 text-lg "><IoIosLogIn />Login</button>
+          <Link href={'/login'}> <button className="btn btn-soft border border-blue-300 rounded-lg btn-info md:px-5 text-lg "><IoIosLogIn />Login</button></Link>
         </div>
       </div>
     </div>
