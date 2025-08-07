@@ -3,6 +3,7 @@ import { MongoClient, ServerApiVersion } from "mongodb";
 
 export const collectionNames = {
     userCollection : 'users',
+    tasksCollection: 'tasks'
 
 }
 
