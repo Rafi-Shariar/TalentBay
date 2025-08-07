@@ -3,11 +3,11 @@ import React from "react";
 import { BiSolidCategoryAlt } from "react-icons/bi";
 import { RiMoneyDollarCircleFill } from "react-icons/ri";
 const TaskCard = ({ task }) => {
-  const { taskTitle, category, description, deadline, budget } = task;
+  const {_id, taskTitle, category, description, deadline, budget } = task;
 
   return (
-   <Link href={'/'}>
-     <div className="bg-white rounded-2xl shadow-md hover:shadow-2xl transition-shadow duration-300 p-6 flex flex-col justify-between h-full border border-sky-300 hover:bg-sky-100">
+   <Link href={`/alltasks/${_id}`}>
+     <div className="bg-white rounded-2xl shadow-md hover:shadow-2xl transition-shadow duration-300 p-6 flex flex-col justify-between h-full border border-sky-300 hover:bg-green-50">
       {/* Title */}
       <h2 className="text-2xl font-semibold text-sky-700 mb-2">{taskTitle}</h2>
 

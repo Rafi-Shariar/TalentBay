@@ -7,7 +7,7 @@ import Lottie from "lottie-react";
 const Banner = () => {
   return (
     <div>
-      <section className="flex items-center flex-col md:flex-row mt-6">
+      <section className="flex items-center flex-col md:flex-row mt-6 gap-10">
         <div className="space-y-3 md:w-1/2">
           <h1 className="text-4xl md:text-5xl font-semibold">
             Find Freelancers.  Post Tasks. Get Things Done.
