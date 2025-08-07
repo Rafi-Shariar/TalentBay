@@ -1,13 +1,19 @@
+"use client";
 import Link from "next/link";
 import React from "react";
-import logo from '../assets/logo.png';
+import logo from "../assets/logo.png";
 import Image from "next/image";
 import { IoHomeOutline } from "react-icons/io5";
 import { FaTasks } from "react-icons/fa";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import { MdBookmarkAdded } from "react-icons/md";
 import { IoIosLogIn } from "react-icons/io";
+import { signOut, useSession } from "next-auth/react";
+
 const Navbar = () => {
+  const { data, status } = useSession();
+  console.log(data);
+
   return (
     <div className="">
       <div className="navbar bg-base-100 shadow-sm p-3">
@@ -39,28 +45,69 @@ const Navbar = () => {
               className="menu menu-lg dropdown-content bg-base-100 rounded-box z-1 mt-3 w-72 p-2 shadow"
             >
               <li>
-                <Link href={'/'}><IoHomeOutline />Home</Link>
-              </li>
-             <li>
-                <Link href={'/alltasks'}><FaTasks />Browse Tasks</Link>
-              </li>
-              <li>
-                <Link href={'/addtask'}><IoMdAddCircleOutline />Add Task</Link>
+                <Link href={"/"}>
+                  <IoHomeOutline />
+                  Home
+                </Link>
               </li>
               <li>
-                <Link href={'/'}><MdBookmarkAdded />My Posted Tasks</Link>
+                <Link href={"/alltasks"}>
+                  <FaTasks />
+                  Browse Tasks
+                </Link>
+              </li>
+              <li>
+                <Link href={"/addtask"}>
+                  <IoMdAddCircleOutline />
+                  Add Task
+                </Link>
+              </li>
+              <li>
+                <Link href={"/"}>
+                  <MdBookmarkAdded />
+                  My Posted Tasks
+                </Link>
               </li>
             </ul>
           </div>
         </div>
         <div className="navbar-center">
-           <Link href={'/'} className="flex items-center gap-2">
-            <Image src={logo} alt="logo" className="w-6 h-6 md:w-12 md:h-12"></Image>
-            <h1 className="text-lg md:text-3xl font-semibold text-blue-500">Talent<span className="font-light text-black">Bay</span></h1>
-           </Link>
+          <Link href={"/"} className="flex items-center gap-2">
+            <Image
+              src={logo}
+              alt="logo"
+              className="w-6 h-6 md:w-12 md:h-12"
+            ></Image>
+            <h1 className="text-lg md:text-3xl font-semibold text-blue-500">
+              Talent<span className="font-light text-black">Bay</span>
+            </h1>
+          </Link>
         </div>
         <div className="navbar-end">
-          <Link href={'/login'}> <button className="btn btn-soft border border-blue-300 rounded-lg btn-info md:px-5 text-lg "><IoIosLogIn />Login</button></Link>
+          {status === "authenticated" ? (
+            <>
+              <h1 className="text-xl hidden md:inline font-semibold text-blue-700 px-4 ">
+                Hi, {data.user?.name}
+              </h1>
+              <button
+                onClick={() => signOut()}
+                className="btn mr-3 rounded-full btn-outline btn-error"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              {" "}
+              <Link href={"/login"}>
+                {" "}
+                <button className="btn btn-soft border border-blue-300 rounded-lg btn-info md:px-5 text-lg ">
+                  <IoIosLogIn />
+                  Login
+                </button>
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </div>
