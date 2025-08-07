@@ -12,7 +12,6 @@ import { signOut, useSession } from "next-auth/react";
 
 const Navbar = () => {
   const { data, status } = useSession();
-  console.log(data);
 
   return (
     <div className="">

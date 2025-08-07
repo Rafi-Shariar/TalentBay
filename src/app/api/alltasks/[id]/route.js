@@ -7,7 +7,7 @@ export const GET = async (req, {params}) => {
     try{
         const {id} = await params;
 
-        const collection = await dbConnect(collectionNames.tasksCollection);
+        const collection = dbConnect(collectionNames.tasksCollection);
         const data = await collection.findOne({_id: new ObjectId(id)});
 
         return NextResponse.json(data);
